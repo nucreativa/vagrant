@@ -2,6 +2,10 @@
 
 echo "Provisioning virtual machine..."
 
+echo "Updating Ubuntu Packages"
+    apt-get update > /dev/null
+    apt-get upgrade > /dev/null
+
 echo "Updating Repository"
     apt-get install python-software-properties build-essential -y > /dev/null
     add-apt-repository ppa:ondrej/php5 -y > /dev/null

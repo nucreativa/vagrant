@@ -34,5 +34,8 @@ echo "Installing Composer"
 echo "Installing MongoDB"
     apt-get install -y mongodb-org > /dev/null
 
+echo "Installing Memcached"
+    apt-get install -y memcached > /dev/null
+
 echo "Installing NodeJS"
     apt-get install -y nodejs > /dev/null

@@ -1,41 +1,46 @@
 #!/bin/bash
 
+# Variables
+DBUSER=vagrant
+DBPASSWD=vagrant
+
 echo "Provisioning virtual machine..."
 
 echo "Updating Ubuntu Packages"
-    apt-get update > /dev/null
-    apt-get upgrade > /dev/null
-
-echo "Updating Repository"
-    apt-get install python-software-properties build-essential -y > /dev/null
-    add-apt-repository ppa:ondrej/php5-5.6 -y > /dev/null
-    add-apt-repository ppa:chris-lea/node.js -y > /dev/null
-    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 > /dev/null
-    echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list > /dev/null
-
-echo "Updating Ubuntu Packages"
-    apt-get update > /dev/null
-    apt-get upgrade > /dev/null
+    apt-get update > /dev/null 2>&1
+    apt-get upgrade > /dev/null 2>&1
+    apt-get -y install python-software-properties build-essential > /dev/null 2>&1
+    locale-gen en_US en_US.UTF-8 > /dev/null 2>&1
+    dpkg-reconfigure locales > /dev/null 2>&1
 
 echo "Installing Git"
-    apt-get install git -y > /dev/null
+    apt-get -y install git > /dev/null 2>&1
 
 echo "Installing Nginx"
-    apt-get install nginx -y > /dev/null
+    apt-get -y install nginx > /dev/null 2>&1
 
 echo "Installing PHP"
-    apt-get install php5-common php5-dev php5-cli php5-fpm curl php5-intl php5-mongo php5-memcache php5-mcrypt php5-mysql php5-gd php5-imagick php5-pgsql php5-sqlite php5-curl -y > /dev/null
+    add-apt-repository ppa:ondrej/php5-5.6 -y > /dev/null 2>&1
+    apt-get update > /dev/null 2>&1
+    apt-get -y install php5-common php5-dev php5-cli php5-fpm curl php5-intl php5-mongo php5-memcache php5-mcrypt php5-mysql php5-gd php5-imagick php5-pgsql php5-sqlite php5-curl > /dev/null 2>&1
 
 echo "Installing Composer"
-    curl -sS https://getcomposer.org/installer | php > /dev/null
-    mv composer.phar /usr/local/bin/composer > /dev/null
-    composer global require "fxp/composer-asset-plugin:~1.0.3" > /dev/null
+    curl -sS https://getcomposer.org/installer | php > /dev/null 2>&1
+    mv composer.phar /usr/local/bin/composer > /dev/null 2>&1
+    composer global require fxp/composer-asset-plugin > /dev/null 2>&1
 
-echo "Installing MongoDB"
-    apt-get install -y mongodb-org > /dev/null
+echo "Installing MariaDB"
+    echo "mysql-server mysql-server/root_password password $DBPASSWD" | debconf-set-selections
+    echo "mysql-server mysql-server/root_password_again password $DBPASSWD" | debconf-set-selections
+    apt-get -y install mariadb-server > /dev/null 2>&1
+    mysql -uroot -p$DBPASSWD -e "grant all privileges on *.* to '$DBUSER'@'%' identified by '$DBPASSWD'"
 
-echo "Installing Memcached"
-    apt-get install -y memcached > /dev/null
+echo "Installing Redis"
+    apt-get -y install redis-server redis-tools > /dev/null 2>&1
 
 echo "Installing NodeJS"
-    apt-get install -y nodejs > /dev/null
+    curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash - > /dev/null 2>&1
+    apt-get -y install nodejs > /dev/null 2>&1
+
+echo "Installing Memcached"
+    apt-get -y install memcached > /dev/null 2>&1

@@ -41,6 +41,7 @@ echo "Installing Redis"
 echo "Installing NodeJS"
     curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash - > /dev/null 2>&1
     apt-get -y install nodejs > /dev/null 2>&1
+    npm install bower -g > /dev/null 2>&1
 
 echo "Installing Memcached"
     apt-get -y install memcached > /dev/null 2>&1

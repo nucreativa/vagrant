@@ -45,3 +45,9 @@ echo "Installing NodeJS"
 
 echo "Installing Memcached"
     apt-get -y install memcached > /dev/null 2>&1
+
+echo "Installing MongoDB"
+    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 > /dev/null 2>&1
+    echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list > /dev/null 2>&1
+    apt-get update > /dev/null 2>&1
+    apt-get -y install mongodb-org > /dev/null 2>&1

@@ -18,8 +18,8 @@
 ##
 
 server {
-	listen 80 default_server;
-	listen [::]:80 default_server ipv6only=on;
+	listen 192.168.64.64:80 default_server;
+	#listen [::]:80 default_server ipv6only=on;
 
 	root /usr/share/nginx/html;
 	index index.html index.htm;
@@ -59,6 +59,8 @@ server {
 	#	fastcgi_pass 127.0.0.1:9000;
 	#	# With php5-fpm:
 	#	fastcgi_pass unix:/var/run/php5-fpm.sock;
+	#	# With php7.0-fpm:
+    #   fastcgi_pass unix:/run/php/php7.0-fpm.sock;
 	#	fastcgi_index index.php;
 	#	include fastcgi_params;
 	#}

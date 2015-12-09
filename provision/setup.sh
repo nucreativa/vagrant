@@ -9,7 +9,7 @@ echo "Provisioning virtual machine..."
 echo "Updating Ubuntu Packages"
     apt-get update > /dev/null 2>&1
     apt-get upgrade > /dev/null 2>&1
-    apt-get -y install python-software-properties build-essential > /dev/null 2>&1
+    apt-get -y install python-software-properties build-essential curl > /dev/null 2>&1
     locale-gen en_US en_US.UTF-8 > /dev/null 2>&1
     dpkg-reconfigure locales > /dev/null 2>&1
 
@@ -20,9 +20,9 @@ echo "Installing Nginx"
     apt-get -y install nginx > /dev/null 2>&1
 
 echo "Installing PHP"
-    add-apt-repository ppa:ondrej/php5-5.6 -y > /dev/null 2>&1
+    add-apt-repository ppa:ondrej/php-7.0 -y > /dev/null 2>&1
     apt-get update > /dev/null 2>&1
-    apt-get -y install php5-common php5-dev php5-cli php5-fpm curl php5-intl php5-mongo php5-memcache php5-mcrypt php5-mysql php5-gd php5-imagick php5-pgsql php5-sqlite php5-curl > /dev/null 2>&1
+    apt-get -y install php7.0 php7.0-fpm php7.0-cli php7.0-curl php7.0-intl php7.0-mysql > /dev/null 2>&1
 
 echo "Installing Composer"
     curl -sS https://getcomposer.org/installer | php > /dev/null 2>&1

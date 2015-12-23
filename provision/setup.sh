@@ -22,7 +22,7 @@ echo "Installing Nginx"
 echo "Installing PHP"
     add-apt-repository ppa:ondrej/php-7.0 -y > /dev/null 2>&1
     apt-get update > /dev/null 2>&1
-    apt-get -y install php7.0 php7.0-fpm php7.0-cli php7.0-curl php7.0-intl php7.0-mysql > /dev/null 2>&1
+    apt-get -y install php7.0 php7.0-dev php7.0-fpm php7.0-cli php7.0-curl php7.0-intl php7.0-mysql > /dev/null 2>&1
 
 echo "Installing Composer"
     curl -sS https://getcomposer.org/installer | php > /dev/null 2>&1
@@ -50,4 +50,7 @@ echo "Installing MongoDB"
     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927 > /dev/null 2>&1
     echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list > /dev/null 2>&1
     apt-get update > /dev/null 2>&1
-    apt-get -y install mongodb-org > /dev/null 2>&1
+    apt-get -y install pkg-config libsasl-dev mongodb-org > /dev/null 2>&1
+    pecl install mongodb > /dev/null 2>&1
+    echo "extension=mongodb.so" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"` > /dev/null 2>&1
+    service php7.0-fpm restart > /dev/null 2>&1

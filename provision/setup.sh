@@ -18,6 +18,7 @@ echo "Installing Git"
 
 echo "Installing Nginx"
     add-apt-repository ppa:nginx/stable
+    apt-get update > /dev/null 2>&1
     apt-get -y install nginx > /dev/null 2>&1
 
 echo "Installing PHP"

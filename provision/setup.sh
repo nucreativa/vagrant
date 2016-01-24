@@ -22,7 +22,7 @@ echo "Installing Nginx"
     apt-get -y install nginx > /dev/null 2>&1
 
 echo "Installing PHP"
-    add-apt-repository ppa:ondrej/php-7.0 -y > /dev/null 2>&1
+    LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php-7.0 -y > /dev/null 2>&1
     apt-get update > /dev/null 2>&1
     apt-get -y install php7.0 php7.0-dev php7.0-fpm php7.0-cli php7.0-curl php7.0-intl php7.0-mysql > /dev/null 2>&1
 

@@ -24,12 +24,15 @@ echo "Installing Nginx"
 echo "Installing PHP"
     LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php-7.0 -y > /dev/null 2>&1
     apt-get update > /dev/null 2>&1
-    apt-get -y install php7.0 php7.0-dev php7.0-fpm php7.0-cli php7.0-curl php7.0-intl php7.0-mysql > /dev/null 2>&1
+    apt-get -y install php7.0 php7.0-dev php7.0-fpm php7.0-cli php7.0-curl php7.0-intl php7.0-mysql php7.0-sqlite3 > /dev/null 2>&1
 
 echo "Installing Composer"
     curl -sS https://getcomposer.org/installer | php > /dev/null 2>&1
     mv composer.phar /usr/local/bin/composer > /dev/null 2>&1
     composer global require fxp/composer-asset-plugin > /dev/null 2>&1
+
+echo "Installing SQLite3"
+    apt-get install sqlite3 libsqlite3-dev > /dev/null 2>&1
 
 echo "Installing MariaDB"
     echo "mysql-server mysql-server/root_password password $DBPASSWD" | debconf-set-selections

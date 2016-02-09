@@ -57,5 +57,5 @@ echo "Installing MongoDB"
     apt-get update > /dev/null 2>&1
     apt-get -y install pkg-config libsasl2-dev mongodb-org > /dev/null 2>&1
     pecl install mongodb > /dev/null 2>&1
-    echo "extension=mongodb.so" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"` > /dev/null 2>&1
+    echo "extension=/usr/lib/php/20151012/mongodb.so" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"` > /dev/null 2>&1
     service php7.0-fpm restart > /dev/null 2>&1

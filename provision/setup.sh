@@ -23,7 +23,7 @@ echo "Installing Nginx"
 echo "Installing PHP 5.6"
     LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php5-5.6 -y > /dev/null 2>&1
     apt-get update > /dev/null 2>&1
-    apt-get -y install php5-common php5-dev php5-fpm php5-cli php5-curl php5-intl php5-mysql php5-sqlite3 php5-mcrypt php5-gd > /dev/null 2>&1
+    apt-get -y install php5-common php5-dev php5-fpm php5-cli php5-curl php5-intl php5-mysql php5-sqlite php5-mcrypt php5-gd > /dev/null 2>&1
 
 #echo "Installing PHP 7"
 #    LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php-7.0 -y > /dev/null 2>&1

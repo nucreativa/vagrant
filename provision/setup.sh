@@ -35,6 +35,9 @@ echo "Installing SQLite3"
     apt-get install sqlite3 libsqlite3-dev > /dev/null 2>&1
 
 echo "Installing MariaDB"
+    apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db > /dev/null 2>&1
+    add-apt-repository 'deb [arch=amd64,i386] http://mariadb.biz.net.id/repo/10.1/ubuntu trusty main'  > /dev/null 2>&1
+    apt-get update > /dev/null 2>&1
     echo "mysql-server mysql-server/root_password password $DBPASSWD" | debconf-set-selections
     echo "mysql-server mysql-server/root_password_again password $DBPASSWD" | debconf-set-selections
     apt-get -y install mariadb-server > /dev/null 2>&1

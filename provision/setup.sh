@@ -20,15 +20,15 @@ echo "Installing Nginx"
     add-apt-repository ppa:nginx/stable > /dev/null 2>&1
     apt-get update && apt-get -y install nginx > /dev/null 2>&1
 
-#echo "Installing PHP 5.6"
-#    LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php5-5.6 -y > /dev/null 2>&1
-#    apt-get update > /dev/null 2>&1
-#    apt-get -y install php5-common php5-dev php5-fpm php5-cli php5-curl php5-intl php5-mysql php5-sqlite3 php5-mcrypt php5-gd > /dev/null 2>&1
-
-echo "Installing PHP 7"
-    LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php-7.0 -y > /dev/null 2>&1
+echo "Installing PHP 5.6"
+    LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php5-5.6 -y > /dev/null 2>&1
     apt-get update > /dev/null 2>&1
-    apt-get -y install php7.0 php7.0-common php7.0-dev php7.0-fpm php7.0-cli php7.0-curl php7.0-intl php7.0-mysql php7.0-sqlite3 php7.0-mcrypt php7.0-gd > /dev/null 2>&1
+    apt-get -y install php5-common php5-dev php5-fpm php5-cli php5-curl php5-intl php5-mysql php5-sqlite3 php5-mcrypt php5-gd > /dev/null 2>&1
+
+#echo "Installing PHP 7"
+#    LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php-7.0 -y > /dev/null 2>&1
+#    apt-get update > /dev/null 2>&1
+#    apt-get -y install php7.0 php7.0-common php7.0-dev php7.0-fpm php7.0-cli php7.0-curl php7.0-intl php7.0-mysql php7.0-sqlite3 php7.0-mcrypt php7.0-gd > /dev/null 2>&1
 
 echo "Installing Composer"
     curl -sS https://getcomposer.org/installer | php > /dev/null 2>&1
@@ -49,8 +49,8 @@ echo "Installing MariaDB"
 echo "Installing Redis"
     apt-get -y install redis-server redis-tools > /dev/null 2>&1
     # temporary solution until Redis fully support PHP7
-    cp /var/www/redis.dev/redis.so /usr/lib/php/20151012/redis.so > /dev/null 2>&1
-    echo "extension=/usr/lib/php/20151012/redis.so" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"` > /dev/null 2>&1
+    #cp /var/www/redis.dev/redis.so /usr/lib/php/20151012/redis.so > /dev/null 2>&1
+    #echo "extension=/usr/lib/php/20151012/redis.so" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"` > /dev/null 2>&1
 
 echo "Installing NodeJS"
     curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash - > /dev/null 2>&1

@@ -12,11 +12,35 @@ vagrant up
 
 ### What's inside
 A pre-configured Ubuntu VM
-* Nginx
+* Nginx 1.8
 * PHP 7 + Composer installed globally + Git enabled
-* MariaDB
+* MariaDB 10.1
 * SQLite3
 * MongoDB 3.2
 * Memcached
 * Redis
 * NodeJS
+* RabbitMQ
+
+### Notes
+
+#### How to connect remotely to MariaDB
+```
+Host : 192.168.64.64
+User : vagrant
+Pass : vagrant
+```
+
+#### How to connect remotely to MongoDB
+```
+Host : 192.168.64.64:27017
+User : vagrant
+Pass : vagrant
+```
+
+#### RabbitMQ Management
+```
+Host : 192.168.64.64:15672
+User : vagrant
+Pass : vagrant
+```

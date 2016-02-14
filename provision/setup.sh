@@ -48,6 +48,9 @@ echo "Installing MariaDB"
 
 echo "Installing Redis"
     apt-get -y install redis-server redis-tools > /dev/null 2>&1
+    # temporary solution until Redis fully support PHP7
+    cp /var/www/redis.dev/redis.so /usr/lib/php/20151012/redis.so > /dev/null 2>&1
+    echo "extension=/usr/lib/php/20151012/redis.so" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"` > /dev/null 2>&1
 
 echo "Installing NodeJS"
     curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash - > /dev/null 2>&1

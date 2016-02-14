@@ -4,7 +4,7 @@ $config = array(
     'default_action'     => 'Index',
     'production'         => true,
     'default_layout'     => 'layout',
-    'timezone'           => 'Europe/Amsterdam',
+    'timezone'           => 'Asia/Jakarta',
     'log' => array(
         'driver'    => 'file',
         'threshold' => 1, /* 0: Disable Logging 1: Error 2: Notice 3: Info 4: Warning 5: Debug */
@@ -16,8 +16,8 @@ $config = array(
         'driver' => 'redis',
         'mysql'  => array(
             'host'     => 'localhost',
-            'username' => 'root',
-            'password' => 'root'
+            'username' => 'vagrant',
+            'password' => 'vagrant'
         ),
         'redis' => array(
             array(

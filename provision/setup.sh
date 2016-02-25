@@ -12,6 +12,7 @@ echo "Updating Ubuntu Packages"
     apt-get -y install python-software-properties build-essential curl > /dev/null 2>&1
     locale-gen en_US en_US.UTF-8 > /dev/null 2>&1
     dpkg-reconfigure locales > /dev/null 2>&1
+    echo "LC_ALL=\"en_US.UTF-8\"" | cat - /etc/default/locale > /tmp/locale.tmp && mv /tmp/locale.tmp /etc/default/locale && export LC_ALL="en_US.UTF-8"
 
 echo "Installing Git"
     apt-get -y install git > /dev/null 2>&1

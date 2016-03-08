@@ -29,7 +29,7 @@ echo "Installing Nginx"
 echo "Installing PHP 7"
     LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php -y > /dev/null 2>&1
     apt-get update > /dev/null 2>&1
-    apt-get -y install php7.0 php7.0-common php7.0-dev php7.0-fpm php7.0-cli php7.0-curl php7.0-intl php7.0-mysql php7.0-sqlite3 php7.0-mcrypt php7.0-gd > /dev/null 2>&1
+    apt-get -y install php7.0 php7.0-common php7.0-dev php7.0-fpm php7.0-cli php7.0-curl php7.0-intl php7.0-mysql php7.0-sqlite3 php7.0-mcrypt php7.0-gd php7.0-xml php7.0-mbstring > /dev/null 2>&1
 
 echo "Installing Composer"
     curl -sS https://getcomposer.org/installer | php > /dev/null 2>&1

@@ -12,6 +12,7 @@ Vagrant.configure(2) do |config|
     vb.gui    = false
     vb.name   = "V7"
     vb.memory = "2048"
+    vb.cpus   = 2
   end
 
   # set auto_update to false, if you do NOT want to check the correct 

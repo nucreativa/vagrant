@@ -9,7 +9,7 @@ echo "Provisioning virtual machine..."
 echo "Updating Ubuntu Packages"
     apt-get update > /dev/null 2>&1
     apt-get upgrade > /dev/null 2>&1
-    apt-get -y install python-software-properties build-essential curl unzip > /dev/null 2>&1
+    apt-get -y install python-software-properties build-essential libnotify-bin curl unzip > /dev/null 2>&1
     locale-gen en_US en_US.UTF-8 > /dev/null 2>&1
     dpkg-reconfigure locales > /dev/null 2>&1
     echo "LC_ALL=\"en_US.UTF-8\"" | cat - /etc/default/locale > /tmp/locale.tmp && mv /tmp/locale.tmp /etc/default/locale && export LC_ALL="en_US.UTF-8"
@@ -29,7 +29,7 @@ echo "Installing Nginx"
 echo "Installing PHP 7"
     LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php -y > /dev/null 2>&1
     apt-get update > /dev/null 2>&1
-    apt-get -y install php7.0 php7.0-common php7.0-dev php7.0-fpm php7.0-cli php7.0-curl php7.0-intl php7.0-mysql php7.0-sqlite3 php7.0-mcrypt php7.0-gd php7.0-xml php7.0-mbstring > /dev/null 2>&1
+    apt-get -y install php7.0 php7.0-common php7.0-dev php7.0-fpm php7.0-cli php7.0-curl php7.0-intl php7.0-mysql php7.0-sqlite3 php7.0-mcrypt php7.0-gd php7.0-xml php7.0-mbstring php7.0-bcmath > /dev/null 2>&1
 
 echo "Installing Composer"
     curl -sS https://getcomposer.org/installer | php > /dev/null 2>&1
@@ -57,6 +57,7 @@ echo "Installing NodeJS"
     curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash - > /dev/null 2>&1
     apt-get -y install nodejs > /dev/null 2>&1
     npm install bower -g > /dev/null 2>&1
+    npm install gulp -g > /dev/null 2>&1
 
 echo "Installing Memcached"
     apt-get -y install memcached > /dev/null 2>&1

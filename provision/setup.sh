@@ -35,7 +35,7 @@ echo "Installing Composer"
     curl -sS https://getcomposer.org/installer | php > /dev/null 2>&1
     mv composer.phar /usr/local/bin/composer > /dev/null 2>&1
     composer global require fxp/composer-asset-plugin > /dev/null 2>&1
-    composer config --global github-oauth.github.com "75d2ef2da7c81e2527313a81237c137ab67205c6"
+    composer config --global github-oauth.github.com "57fba99f32bd57dc8599b055f9d447215511d76e"
 
 echo "Installing SQLite3"
     apt-get install sqlite3 libsqlite3-dev > /dev/null 2>&1
